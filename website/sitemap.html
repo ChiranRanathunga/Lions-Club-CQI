@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Map | Lions District 306 D6 CQI Platform</title>
+<meta name="description" content="Complete visual site map and page hierarchy for Lions District 306 D6 Club Quality Initiative (CQI) Web Application.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/lions-logo.png">
+<style>
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .sitemap-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--r-md);
+    padding: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .sitemap-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 155, 39, 0.4);
+  }
+  .sitemap-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sitemap-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sitemap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .sitemap-link:hover {
+    text-decoration: underline;
+  }
+  .sitemap-desc {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+  .role-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+  }
+  .role-public { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
+  .role-club { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+  .role-zone { background: rgba(155, 89, 182, 0.15); color: #9b59b6; }
+  .role-district { background: rgba(245, 166, 35, 0.15); color: #f5a623; }
+</style>
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/lions-logo.png" alt="Lions Logo">
+      <div class="nav-brand-text">
+        <span>District 306 D6</span>
+        <span>Lions CQI</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About CQI</a>
+      <a href="toolkits/index.html">Toolkits</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="sitemap.html" class="active">Site Map</a>
+    </div>
+    <a href="dashboard.html" class="btn btn-primary btn-sm">🔐 Login</a>
+  </div>
+</nav>
+
+<div style="padding:120px 0 60px;">
+  <div class="container">
+    <div class="section-label">Navigation & Architecture</div>
+    <h1>System <span class="text-gold">Site Map</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-secondary);max-width:760px;margin-top:12px;">
+      Explore the complete layout of the Lions District 306 D6 CQI Web Platform. Access public strategic documentation, role-gated analytics, and interactive continuous quality improvement forms.
+    </p>
+
+    <div class="sitemap-grid">
+      <!-- Card 1: Core Public Pages -->
+      <div class="sitemap-card">
+        <h3><span>🌐</span> Core Public Pages</h3>
+        <ul class="sitemap-list">
+          <li class="sitemap-item">
+            <div>
+              <a href="index.html" class="sitemap-link">🏠 Home / Landing Page</a>
+              <span class="role-badge role-public">Public</span>
+            </div>
+            <div class="sitemap-desc">Overview of District 306 D6 CQI strategy, 3 core pillars, quick toolkit access, and real-time activity metrics.</div>
+          </li>
+          <li class="sitemap-item">
+            <div>
+              <a href="about.html" class="sitemap-link">📘 About CQI & Strategy</a>
+              <span class="role-badge role-public">Public</span>
+            </div>
+            <div class="sitemap-desc">Detailed rationale, Dual-Mechanism architecture (M1 & M2), PDCA continuous improvement cycle, and cabinet advisory circuit.</div>
+          </li>
+          <li class="sitemap-item">
+            <div>
+              <a href="sitemap.html" class="sitemap-link">🗺️ System Site Map</a>
+              <span class="role-badge role-public">Public</span>
+            </div>
+            <div class="sitemap-desc">Visual structural hierarchy and link directory of all application pages, toolkits, and analytical views.</div>
+          </li>
+          <li class="sitemap-item">
+            <div>
+              <a href="sitemap.xml" class="sitemap-link">📄 XML Sitemap (SEO)</a>
+              <span class="role-badge role-public">Public</span>
+            </div>
+            <div class="sitemap-desc">Standard XML document for web search engine indexability and web crawler routing.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Role-Gated Dashboard -->
+      <div class="sitemap-card">
+        <h3><span>📊</span> CQI Analytics Dashboard</h3>
+        <ul class="sitemap-list">
+          <li class="sitemap-item">
+            <div>
+              <a href="dashboard.html" class="sitemap-link">📈 Live Analytics Portal</a>
+              <span class="role-badge role-district">Tier 1-3</span>
+            </div>
+            <div class="sitemap-desc">Centralized intelligence dashboard featuring Chart.js performance trends, Club Health Index (CHI), radar pillar analysis, and zone health heatmaps.</div>
+          </li>
+          <li class="sitemap-item">
+            <div style="margin-left:12px;border-left:2px solid var(--border-subtle);padding-left:10px;">
+              <span style="font-size:0.88rem;font-weight:600;color:var(--text-primary);">🔹 Club Officer View (Tier 3)</span>
+              <span class="role-badge role-club">Club Level</span>
+            </div>
+            <div class="sitemap-desc" style="margin-left:12px;padding-left:10px;">Restricted to own club data, meeting health trends, and anonymous member solution bank.</div>
+          </li>
+          <li class="sitemap-item">
+            <div style="margin-left:12px;border-left:2px solid var(--border-subtle);padding-left:10px;">
+              <span style="font-size:0.88rem;font-weight:600;color:var(--text-primary);">🔹 Region & Zone Chair View (Tier 2)</span>
+              <span class="role-badge role-zone">Jurisdiction</span>
+            </div>
+            <div class="sitemap-desc" style="margin-left:12px;padding-left:10px;">Jurisdictional overview across assigned clubs (Region 1-4, Zone 1-8) for proactive leadership support.</div>
+          </li>
+          <li class="sitemap-item">
+            <div style="margin-left:12px;border-left:2px solid var(--border-subtle);padding-left:10px;">
+              <span style="font-size:0.88rem;font-weight:600;color:var(--text-primary);">🔹 District Cabinet View (Tier 1)</span>
+              <span class="role-badge role-district">District Cabinet</span>
+            </div>
+            <div class="sitemap-desc" style="margin-left:12px;padding-left:10px;">District Governor & Cabinet full visibility, cross-validation alerts, data mismatch triggers, and intervention status.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Interactive CQI Toolkit Suite -->
+      <div class="sitemap-card" style="grid-column: 1 / -1;">
+        <h3><span>🛠️</span> Interactive CQI Toolkit Suite</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-top:12px;">
+          <div>
+            <div style="margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <a href="toolkits/index.html" class="sitemap-link">📋 Toolkit Selection Center</a>
+              <span class="role-badge role-public">Hub Page</span>
+            </div>
+            <div class="sitemap-desc" style="margin-bottom:16px;">Gateway page to browse, filter, and launch all 5 interactive digital assessment forms.</div>
+
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="sitemap-item">
+                <div>
+                  <a href="toolkits/meeting.html" class="sitemap-link">⏱️ T1.1A: Meeting Heartbeat Form</a>
+                  <span class="role-badge role-club">M1 Internal</span>
+                </div>
+                <div class="sitemap-desc">2-minute post-meeting sentiment check capturing engagement, atmosphere, and instant member recommendations.</div>
+              </div>
+              <div class="sitemap-item">
+                <div>
+                  <a href="toolkits/project.html" class="sitemap-link">📌 T1.1B: Post-Project Check Form</a>
+                  <span class="role-badge role-club">M1 Internal</span>
+                </div>
+                <div class="sitemap-desc">Project reflection evaluator for service activities measuring ROI, community impact, and team cohesion.</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:34px;">
+              <div class="sitemap-item">
+                <div>
+                  <a href="toolkits/member.html" class="sitemap-link">🔒 T1.2: Member Pulse Form</a>
+                  <span class="role-badge role-club">M1 Anonymous</span>
+                </div>
+                <div class="sitemap-desc">100% anonymous direct feedback channel for Lion members to report unspoken concerns and suggest solutions.</div>
+              </div>
+              <div class="sitemap-item">
+                <div>
+                  <a href="toolkits/sync.html" class="sitemap-link">🔄 T1.3: Monthly Club Health Sync</a>
+                  <span class="role-badge role-club">M1 Executive</span>
+                </div>
+                <div class="sitemap-desc">Monthly executive self-assessment across 5 key pillars: Governance, Membership, Projects, Finance, and Morale.</div>
+              </div>
+              <div class="sitemap-item">
+                <div>
+                  <a href="toolkits/visit.html" class="sitemap-link">👁️ T2.2: Visit Insight Card Form</a>
+                  <span class="role-badge role-zone">M2 Advisory</span>
+                </div>
+                <div class="sitemap-desc">Digital assessment used by Region & Zone Chairpersons during official club visits to record qualitative observations.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Banner -->
+    <div class="card" style="margin-top:32px;text-align:center;background:linear-gradient(135deg, rgba(197, 155, 39, 0.08), rgba(0, 45, 98, 0.2));border-color:rgba(197, 155, 39, 0.3);">
+      <h3 style="margin-bottom:10px;">Lions District 306 D6 — Sri Lanka</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:20px;">Continuous Quality Improvement Dual Mechanism System (2026–2027)</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html" class="btn btn-primary btn-sm">🏠 Back to Home</a>
+        <a href="toolkits/index.html" class="btn btn-outline btn-sm">📋 Open Toolkits</a>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">📊 Open Dashboard</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="border-top:1px solid var(--border-subtle);padding:30px 0;margin-top:40px;text-align:center;color:var(--text-muted);font-size:0.85rem;">
+  <div class="container">
+    <p>Lions District 306 D6, Sri Lanka — Continuous Quality Improvement Platform (2026–2027)</p>
+    <p style="margin-top:6px;">
+      <a href="index.html" style="color:var(--text-muted);text-decoration:none;">Home</a> | 
+      <a href="about.html" style="color:var(--text-muted);text-decoration:none;">About CQI</a> | 
+      <a href="toolkits/index.html" style="color:var(--text-muted);text-decoration:none;">Toolkits</a> | 
+      <a href="dashboard.html" style="color:var(--text-muted);text-decoration:none;">Dashboard</a> | 
+      <a href="sitemap.html" style="color:var(--gold);text-decoration:none;">Site Map</a> | 
+      <a href="sitemap.xml" style="color:var(--text-muted);text-decoration:none;">XML Sitemap</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/mock-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

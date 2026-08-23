@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CQI Toolkits Hub | District 306 D6</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/lions-logo.png">
+<style>
+  .toolkit-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--r-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .toolkit-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 155, 39, 0.4);
+  }
+  .toolkit-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/lions-logo.png" alt="Lions Logo">
+      <div class="nav-brand-text">
+        <span>District 306 D6</span>
+        <span>Lions CQI</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About CQI</a>
+      <a href="index.html" class="active">Toolkits</a>
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="../sitemap.html">Site Map</a>
+    </div>
+    <a href="../dashboard.html" class="btn btn-primary btn-sm">🔐 Login</a>
+  </div>
+</nav>
+
+<div style="padding:120px 0 80px;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:36px;">
+      <div class="section-label">Official District 306 D6 Toolkits</div>
+      <h1>Interactive <span class="text-gold">CQI Toolkit Center</span></h1>
+      <p style="max-width:620px;margin:12px auto 0;color:var(--text-secondary);">
+        Select a continuous quality improvement toolkit below to open the embedded application form or access the official Google Form directly.
+      </p>
+
+      <!-- Strategy Architecture Doc Link -->
+      <div style="margin-top:20px;">
+        <a href="https://docs.google.com/document/d/1o6gt5FddKZ5tplEWJjT1c_X9ldwuvkYi4x5ZXUmqBco/edit?usp=drive_link" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+          📄 View CQI Strategy & Architecture Protocol (Google Doc) ↗
+        </a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;">
+      
+      <!-- T1.1A Card -->
+      <div class="toolkit-card" style="border-left:4px solid #7eb3ff;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:2rem;">⏱️</span>
+            <span style="font-size:.7rem;font-weight:700;color:#7eb3ff;letter-spacing:.08em;text-transform:uppercase;background:rgba(126,179,255,0.15);padding:4px 8px;border-radius:12px;">Mechanism 1</span>
+          </div>
+          <h3>Toolkit 1.1A — Meeting Heartbeat</h3>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">
+            මාසික රැස්වීම් හෘද ස්පන්දන පිරික්සුම — 2-minute post-meeting sentiment check evaluating attendance, finance, projects, and harmony.
+          </p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="meeting.html" class="btn btn-primary btn-sm">Open Embedded Form</a>
+          <a href="https://docs.google.com/forms/d/1-8Sqm5CjFcr0zLfAgEKZI73rIF_5bx3f2chikvAPPYs/viewform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Google Form ↗</a>
+        </div>
+      </div>
+
+      <!-- T1.1B Card -->
+      <div class="toolkit-card" style="border-left:4px solid #7eb3ff;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:2rem;">📌</span>
+            <span style="font-size:.7rem;font-weight:700;color:#7eb3ff;letter-spacing:.08em;text-transform:uppercase;background:rgba(126,179,255,0.15);padding:4px 8px;border-radius:12px;">Mechanism 1</span>
+          </div>
+          <h3>Toolkit 1.1B — Post-Project Check</h3>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">
+            ව්‍යාපෘති පසු-ඇගයීම් හෘද ස්පන්දන පිරික්සුම — Service project reflection measuring community impact, budget control, and team spirit.
+          </p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="project.html" class="btn btn-primary btn-sm">Open Embedded Form</a>
+          <a href="https://docs.google.com/forms/d/1beJ77wFMox4ciRo8ycWH7BbJzyf6edxwdK543ei-0nU/viewform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Google Form ↗</a>
+        </div>
+      </div>
+
+      <!-- T1.2 Card -->
+      <div class="toolkit-card" style="border-left:4px solid #2ecc71;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:2rem;">🔒</span>
+            <span style="font-size:.7rem;font-weight:700;color:#2ecc71;letter-spacing:.08em;text-transform:uppercase;background:rgba(46,204,113,0.15);padding:4px 8px;border-radius:12px;">100% Anonymous</span>
+          </div>
+          <h3>Toolkit 1.2 — Member Pulse</h3>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">
+            සිංහ සමාජ ගුණාත්මකතා පිරික්සුම — Confidential observation & practical solution submission directly into District Solution Bank.
+          </p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="member.html" class="btn btn-primary btn-sm">Open Embedded Form</a>
+          <a href="https://docs.google.com/forms/d/1nbvgES1qyN3sY3cYu3wNenyOZH7MmwK9oIS2CWOoh4g/viewform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Google Form ↗</a>
+        </div>
+      </div>
+
+      <!-- T1.3 Card -->
+      <div class="toolkit-card" style="border-left:4px solid #7eb3ff;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:2rem;">🔄</span>
+            <span style="font-size:.7rem;font-weight:700;color:#7eb3ff;letter-spacing:.08em;text-transform:uppercase;background:rgba(126,179,255,0.15);padding:4px 8px;border-radius:12px;">Monthly Sync</span>
+          </div>
+          <h3>Toolkit 1.3 — Club Health Sync</h3>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">
+            මාසික සෞඛ්‍ය සංඥා වාර්තාව — Executive self-assessment reporting key performance indicators and early warning signals to the District.
+          </p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="sync.html" class="btn btn-primary btn-sm">Open Embedded Form</a>
+          <a href="https://docs.google.com/forms/d/1Hb2_C9CQioMcbfnmyyQsQq7F23XYydigpAFtgATdENY/viewform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Google Form ↗</a>
+        </div>
+      </div>
+
+      <!-- T2.2 Card -->
+      <div class="toolkit-card" style="border-left:4px solid var(--gold);">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:2rem;">👁️</span>
+            <span style="font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;background:rgba(197,155,39,0.15);padding:4px 8px;border-radius:12px;">Mechanism 2</span>
+          </div>
+          <h3>Toolkit 2.2 — Leader's Visit Insight Card</h3>
+          <p style="font-size:.85rem;color:var(--text-secondary);margin-top:8px;">
+            නායකත්ව නිරීක්ෂණ සටහන් පත — Executive diagnostic tool for Zone & Region Chairpersons during official club visits to validate health data.
+          </p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="visit.html" class="btn btn-primary btn-sm">Open Embedded Form</a>
+          <a href="https://docs.google.com/forms/d/1jvKzvYS_gI2SJL9dWT4-dDf2AoyylgbScXc_2O9wQE8/viewform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Google Form ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../js/mock-data.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>T1.2 Anonymous Member Pulse | Lions CQI 306 D6</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/lions-logo.png">
+<style>
+  .form-toggle-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 12px 20px;
+    border-radius: var(--r-md);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .iframe-container {
+    width: 100%;
+    height: 980px;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+  }
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/lions-logo.png" alt="Lions Logo">
+      <div class="nav-brand-text">
+        <span>District 306 D6</span>
+        <span>Lions CQI</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="active">Toolkits</a>
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="../sitemap.html">Site Map</a>
+    </div>
+    <a href="../dashboard.html" class="btn btn-primary btn-sm">🔐 Dashboard</a>
+  </div>
+</nav>
+
+<div style="padding:120px 0 80px;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:28px;">
+      <div class="section-label">Mechanism 1 — Toolkit 1.2</div>
+      <h1>Anonymous Member <span class="text-gold">Pulse & Solution Bank</span></h1>
+      <p style="max-width:640px;margin:12px auto 0;color:var(--text-secondary);">
+        සිංහ සමාජ ගුණාත්මකතා පිරික්සුම — 100% Confidential member observation & practical solution suggestion channel (60-second assessment).
+      </p>
+    </div>
+
+    <!-- Google Form Action & Toggle Bar -->
+    <div class="form-toggle-bar">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.2rem;">🔒</span>
+        <div>
+          <strong style="font-size:0.95rem;color:var(--text-primary);">Official Anonymous District Google Form</strong>
+          <span style="font-size:0.8rem;color:var(--text-muted);display:block;">CQI Toolkit 1.2 — Lion District D6</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <button id="toggleBtn" class="btn btn-outline btn-sm" onclick="toggleFormView()">Switch to Interactive Web Form</button>
+        <a href="https://docs.google.com/forms/d/1nbvgES1qyN3sY3cYu3wNenyOZH7MmwK9oIS2CWOoh4g/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          Open in Google Forms ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Official Google Form Embed Container -->
+    <div id="googleFormView" class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/1nbvgES1qyN3sY3cYu3wNenyOZH7MmwK9oIS2CWOoh4g/viewform?embedded=true" 
+              id="gformIframe"
+              title="CQI Toolkit 1.2 Google Form">
+        Loading form...
+      </iframe>
+    </div>
+
+    <!-- Interactive Web View -->
+    <div id="webFormView" style="display:none;" class="form-wrap">
+      <div class="form-card">
+        <form onsubmit="handleMemberSubmit(event)">
+          <div style="margin-bottom:20px;padding:12px;background:rgba(46, 204, 113, 0.1);border-radius:var(--r-sm);border:1px solid rgba(46, 204, 113, 0.3);">
+            <p style="font-size:0.85rem;color:#2ecc71;margin:0;">
+              🛡️ <strong>100% Confidential & Anonymous:</strong> No identity details are tracked. Your bottom-up observation will be fed directly to the District Solution Bank.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label>Target Club Name <span>*</span></label>
+            <select id="memberClub" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label>Domain / Category <span>*</span></label>
+            <select id="memberDomain" class="form-control" required>
+              <option>Finance & Admin</option>
+              <option>Leadership & Decision-making</option>
+              <option>Member Unity & Meetings</option>
+              <option>Projects & Community Service</option>
+              <option>Communication & Transparency</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Observation / Risk Identified <span>*</span></label>
+            <textarea id="memberObservation" class="form-control" rows="3" placeholder="Describe any unspoken friction point or systemic risk you have noticed..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Proposed Practical Solution <span>*</span></label>
+            <textarea id="memberSolution" class="form-control" rows="3" placeholder="Propose a simple, actionable solution that leaders can implement..." required></textarea>
+          </div>
+
+          <div class="form-actions" style="margin-top:28px;">
+            <a href="index.html" class="btn btn-glass">← Back to Toolkits</a>
+            <button type="submit" class="btn btn-primary">Submit to District Solution Bank 💡</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/mock-data.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const clubSelect = document.getElementById("memberClub");
+    if (clubSelect && window.RAW_DISTRICT_CLUBS) {
+      clubSelect.innerHTML = '<option value="">Select target club...</option>';
+      RAW_DISTRICT_CLUBS.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c.name;
+        opt.textContent = `${c.name} (${c.region} · ${c.zone})`;
+        clubSelect.appendChild(opt);
+      });
+    }
+  });
+
+  function toggleFormView() {
+    const gView = document.getElementById('googleFormView');
+    const wView = document.getElementById('webFormView');
+    const btn = document.getElementById('toggleBtn');
+
+    if (gView.style.display === 'none') {
+      gView.style.display = 'block';
+      wView.style.display = 'none';
+      btn.textContent = 'Switch to Interactive Web Form';
+    } else {
+      gView.style.display = 'none';
+      wView.style.display = 'block';
+      btn.textContent = 'Switch to Google Form Embed';
+    }
+  }
+
+  function handleMemberSubmit(e) {
+    e.preventDefault();
+    const club = document.getElementById("memberClub").value;
+    const domain = document.getElementById("memberDomain").value;
+    const observation = document.getElementById("memberObservation").value;
+    const solution = document.getElementById("memberSolution").value;
+
+    const entry = {
+      id: Date.now(),
+      club,
+      domain,
+      observation,
+      solution,
+      date: new Date().toISOString().split("T")[0],
+      status: "Submitted to Solution Bank"
+    };
+
+    saveSubmission("solutions", entry);
+    showToast(`Anonymous observation & solution submitted for ${club}! Added to Solution Bank.`, "success");
+
+    setTimeout(() => {
+      sessionStorage.setItem("cqi_tier", "tier1");
+      sessionStorage.setItem("cqi_email", "governor@lions306d6.lk");
+      location.href = "../dashboard.html#solutions";
+    }, 1200);
+  }
+</script>
+</body>
+</html>

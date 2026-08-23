@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lions CQI | District 306 D6 Sri Lanka</title>
+<meta name="description" content="Club Quality Initiative — a living ecosystem empowering every Lion in District 306 D6, Sri Lanka to serve with dignity, joy and profound impact.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/lions-logo.png">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/lions-logo.png" alt="Lions International">
+      <div class="nav-brand-text"><span>District 306 D6</span><span>Lions CQI</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About CQI</a>
+      <a href="toolkits/index.html">Toolkits</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <a href="dashboard.html" id="loginBtn" class="btn btn-primary btn-sm">🔐 Login</a>
+      <div id="navUser" class="nav-user hidden">
+        <div class="nav-avatar" id="navAvatar">L</div>
+        <span id="navUserName">Lion</span>
+        <button onclick="logout()" class="btn btn-sm" style="padding:6px 10px;color:var(--text-muted);">↩</button>
+      </div>
+    </div>
+    <div class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').style.display='flex'">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span>🦁 District 306 D6 · Sri Lanka · 2026-27</div>
+      <h1>Club <span>Quality</span><br>Initiative</h1>
+      <p>A living, dynamic ecosystem that empowers every Lion to deliver community service with dignity, joy, and profound impact — driven by data and human empathy.</p>
+      <div class="hero-ctas">
+        <a href="toolkits/index.html" class="btn btn-primary">📋 Submit Toolkit</a>
+        <a href="dashboard.html" class="btn btn-outline">📊 View Dashboard</a>
+      </div>
+    </div>
+    <div class="health-card">
+      <div class="health-card-title">District Health — Live</div>
+      <div class="health-card-sub">53 clubs across 5 regions · August 2026</div>
+      <div class="health-indicators">
+        <div class="health-indicator green">
+          <div class="hi-icon">🟢</div>
+          <div class="hi-info"><div class="hi-label">Healthy</div><div class="hi-desc">No intervention required</div></div>
+          <div class="hi-count">42</div>
+        </div>
+        <div class="health-indicator amber">
+          <div class="hi-icon">🟡</div>
+          <div class="hi-info"><div class="hi-label">Under Monitor</div><div class="hi-desc">Minor issues, resolving internally</div></div>
+          <div class="hi-count">8</div>
+        </div>
+        <div class="health-indicator red">
+          <div class="hi-icon">🔴</div>
+          <div class="hi-info"><div class="hi-label">Critical</div><div class="hi-desc">District support required</div></div>
+          <div class="hi-count">3</div>
+        </div>
+      </div>
+      <div class="health-footer">
+        <span>Last updated: Aug 23, 2026</span>
+        <span class="live-dot">Live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:linear-gradient(180deg,var(--navy-deep) 0%,rgba(0,30,80,.3) 100%);">
+  <div class="container text-center">
+    <div class="section-label">Our Philosophy</div>
+    <h2>Three Pillars of <span class="text-gold">CQI</span></h2>
+    <p style="max-width:560px;margin:12px auto 0;">Every toolkit, every dashboard, every intervention is built on these three humanistic virtues.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">⏸️</div>
+        <h3>Instant Pause</h3>
+        <p>Before reacting to any club signal — positive or negative — leaders pause, analyze the data, and diagnose the root cause. No impulsive actions, ever.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🎯</div>
+        <h3>Purpose &gt; Ego</h3>
+        <p>Every decision pivots from personal agendas toward the club's collective mission. The CQI system catches ego-driven data manipulation automatically.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">👂</div>
+        <h3>Listening to Understand</h3>
+        <p>Leaders and members listen empathetically — not to counter-argue, but to understand. Every observation becomes a solution, not an accusation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat-item"><h3 data-count="53">53</h3><p>Clubs in District</p></div>
+      <div class="stat-item"><h3 data-count="6">6</h3><p>CQI Toolkits</p></div>
+      <div class="stat-item"><h3 data-count="5">5</h3><p>Regions Covered</p></div>
+      <div class="stat-item"><h3 data-count="100">100</h3><p>% Digital Submissions</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">The System</div>
+      <h2>Six <span class="text-gold">Toolkits</span>, One Ecosystem</h2>
+      <p style="max-width:560px;margin:12px auto 0;">Mode 1 builds internal club resilience. Mode 2 ensures district-level support and validation.</p>
+    </div>
+    <div class="toolkits-grid">
+      <div class="toolkit-card mode1">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">📅</div>
+          <span class="toolkit-mode">Mode 1 · Internal</span>
+        </div>
+        <h4>Toolkit 1.1A — Meeting Heartbeat</h4>
+        <p>Monthly meeting assessment across 5 domains: Participation, Finance, Projects, Administration, and Harmony.</p>
+        <a href="toolkits/meeting.html" class="toolkit-link">Submit Now →</a>
+      </div>
+      <div class="toolkit-card mode1">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">🏗️</div>
+          <span class="toolkit-mode">Mode 1 · Internal</span>
+        </div>
+        <h4>Toolkit 1.1B — Post-Project Check</h4>
+        <p>Field evaluation after every project: Impact, Budget discipline, Participation, Planning, and Harmony under pressure.</p>
+        <a href="toolkits/project.html" class="toolkit-link">Submit Now →</a>
+      </div>
+      <div class="toolkit-card mode1">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">💡</div>
+          <span class="toolkit-mode">Mode 1 · Internal</span>
+        </div>
+        <h4>Toolkit 1.2 — Member Observation</h4>
+        <p>Any member can anonymously flag a risk and propose a solution — transforming critics into a solution-driven coalition.</p>
+        <a href="toolkits/member.html" class="toolkit-link">Submit Now →</a>
+      </div>
+      <div class="toolkit-card mode1">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">📊</div>
+          <span class="toolkit-mode">Mode 1 · Internal</span>
+        </div>
+        <h4>Toolkit 1.3 — Monthly Health Sync</h4>
+        <p>CQI Coordinator's monthly report: aggregating heartbeats, member voices, and overall traffic-light diagnosis to the District.</p>
+        <a href="toolkits/sync.html" class="toolkit-link">Submit Now →</a>
+      </div>
+      <div class="toolkit-card mode2">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">🔍</div>
+          <span class="toolkit-mode">Mode 2 · External</span>
+        </div>
+        <h4>Toolkit 2.1 — Regional Radar</h4>
+        <p>Regional CQI matrix auto-flagging clubs with 2+ consecutive Yellow or Red signals for heightened monitoring.</p>
+        <a href="dashboard.html" class="toolkit-link">View on Dashboard →</a>
+      </div>
+      <div class="toolkit-card mode2">
+        <div class="toolkit-header">
+          <div class="toolkit-icon">👤</div>
+          <span class="toolkit-mode">Mode 2 · External</span>
+        </div>
+        <h4>Toolkit 2.2 — Leader's Visit Card</h4>
+        <p>30-second discreet observation form for visiting leaders: Vibe, Ego vs Purpose, Listening, and Discipline assessment.</p>
+        <a href="toolkits/visit.html" class="toolkit-link">Submit Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:linear-gradient(135deg,rgba(245,166,35,.06),rgba(0,48,135,.15));border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);">
+  <div class="container text-center">
+    <h2>Ready to <span class="text-gold">Strengthen</span> Your Club?</h2>
+    <p style="margin:12px auto 32px;max-width:480px;">Submit your monthly toolkit or log into the dashboard to view your club's health status.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="toolkits/index.html" class="btn btn-primary">📋 Go to Toolkits</a>
+      <a href="about.html" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/lions-logo.png" alt="Lions" style="width:48px;">
+        <h5 style="margin-top:14px;margin-bottom:8px;">Lions District 306 D6</h5>
+        <p>Club Quality Initiative — a world-class continuous improvement framework for Lions Clubs in Sri Lanka.</p>
+      </div>
+      <div>
+        <h5>Toolkits</h5>
+        <ul>
+          <li><a href="toolkits/meeting.html">Meeting Heartbeat</a></li>
+          <li><a href="toolkits/project.html">Post-Project Check</a></li>
+          <li><a href="toolkits/member.html">Member Observation</a></li>
+          <li><a href="toolkits/sync.html">Health Sync</a></li>
+          <li><a href="toolkits/visit.html">Visit Card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="about.html">About CQI</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="https://www.lionsclubs.org" target="_blank">Lions International</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>District 306 D6</h5>
+        <ul>
+          <li><a href="#">Governor's Message</a></li>
+          <li><a href="#">CQI Team</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026-27 Lions Clubs International — District 306 D6, Sri Lanka. All rights reserved.</p>
+      <p>Built with 🦁 by the District CQI Strategy Team</p>
+    </div>
+  </div>
+</footer>
+<script src="js/mock-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>T2.2 Leader's Visit Insight Card | Lions CQI 306 D6</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/lions-logo.png">
+<style>
+  .form-toggle-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 12px 20px;
+    border-radius: var(--r-md);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .iframe-container {
+    width: 100%;
+    height: 1000px;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+  }
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/lions-logo.png" alt="Lions Logo">
+      <div class="nav-brand-text">
+        <span>District 306 D6</span>
+        <span>Lions CQI</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="active">Toolkits</a>
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="../sitemap.html">Site Map</a>
+    </div>
+    <a href="../dashboard.html" class="btn btn-primary btn-sm">🔐 Dashboard</a>
+  </div>
+</nav>
+
+<div style="padding:120px 0 80px;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:28px;">
+      <div class="section-label">Mechanism 2 — Toolkit 2.2</div>
+      <h1>Leader's Visit <span class="text-gold">Insight Card</span></h1>
+      <p style="max-width:650px;margin:12px auto 0;color:var(--text-secondary);">
+        නායකත්ව නිරීක්ෂණ සටහන් පත — Executive Diagnostic & Validation Tool for Region & Zone Chairpersons during official club visits.
+      </p>
+    </div>
+
+    <!-- Google Form Action & Toggle Bar -->
+    <div class="form-toggle-bar">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.2rem;">👁️</span>
+        <div>
+          <strong style="font-size:0.95rem;color:var(--text-primary);">Official Leadership Google Form</strong>
+          <span style="font-size:0.8rem;color:var(--text-muted);display:block;">CQI Toolkit 2.2 — Lion District D6</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <button id="toggleBtn" class="btn btn-outline btn-sm" onclick="toggleFormView()">Switch to Interactive Web Form</button>
+        <a href="https://docs.google.com/forms/d/1jvKzvYS_gI2SJL9dWT4-dDf2AoyylgbScXc_2O9wQE8/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          Open in Google Forms ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Official Google Form Embed Container -->
+    <div id="googleFormView" class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/1jvKzvYS_gI2SJL9dWT4-dDf2AoyylgbScXc_2O9wQE8/viewform?embedded=true" 
+              id="gformIframe"
+              title="CQI Toolkit 2.2 Google Form">
+        Loading form...
+      </iframe>
+    </div>
+
+    <!-- Interactive Web View -->
+    <div id="webFormView" style="display:none;" class="form-wrap">
+      <div class="form-card">
+        <form onsubmit="handleVisitSubmit(event)">
+          <div style="margin-bottom:20px;padding:12px;background:rgba(0, 48, 135, 0.2);border-radius:var(--r-sm);border:1px solid rgba(126, 179, 255, 0.3);">
+            <p style="font-size:0.85rem;color:#7eb3ff;margin:0;">
+              👁️ <strong>Executive Audit Tool:</strong> Zone & Region Chairpersons use this form to cross-validate club self-reports against on-the-ground observations.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label>Visited Club Name <span>*</span></label>
+            <select id="visitClub" class="form-control" required></select>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label>Visiting Official Name & Title <span>*</span></label>
+              <input id="visitOfficer" class="form-control" type="text" placeholder="e.g. Lion Chaminda Perera (Zone Chair 1)" required>
+            </div>
+            <div class="form-group">
+              <label>Visit Date <span>*</span></label>
+              <input id="visitDate" type="date" class="form-control" required>
+            </div>
+          </div>
+
+          <h4 style="margin:24px 0 14px;font-size:0.85rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;">Field Audit Diagnostics (1 - 5 Scale)</h4>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label>Meeting Engagement <span>*</span></label>
+              <select id="visitEngagement" class="form-control" required>
+                <option value="5">5/5 — High Member Quorum</option>
+                <option value="4">4/5 — Satisfactory</option>
+                <option value="3">3/5 — Moderate</option>
+                <option value="2">2/5 — Low Quorum</option>
+                <option value="1">1/1 — Poor / No Meeting</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Admin & Financial Audit <span>*</span></label>
+              <select id="visitAdmin" class="form-control" required>
+                <option value="5">5/5 — Accounts Verified</option>
+                <option value="4">4/5 — Good Standing</option>
+                <option value="3">3/5 — Delays Noted</option>
+                <option value="2">2/5 — Unbacked Cash</option>
+                <option value="1">1/1 — Severe Audit Deficit</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Leadership Harmony <span>*</span></label>
+              <select id="visitHarmony" class="form-control" required>
+                <option value="5">5/5 — Strong Solidarity</option>
+                <option value="4">4/5 — Good Consensus</option>
+                <option value="3">3/5 — Moderate Friction</option>
+                <option value="2">2/5 — Internal Conflict</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Leader Validated Status (External Audit Rating) <span>*</span></label>
+            <select id="visitLeaderStatus" class="form-control" required>
+              <option value="green">🟢 Green — Verified Healthy</option>
+              <option value="amber">🟡 Amber — Warning / Needs Guidance</option>
+              <option value="red">🔴 Red — Critical / Data Mismatch Flagged</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Identified Hidden Issues / Discrepancies <span>*</span></label>
+            <textarea id="visitIssues" class="form-control" rows="3" placeholder="Note any discrepancy between club self-reports and actual field audit findings..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Recommended Action Plan / Intervention <span>*</span></label>
+            <textarea id="visitAction" class="form-control" rows="3" placeholder="Detail the next leadership support step (e.g. Zone Chair mediation, District Treasurer audit)..." required></textarea>
+          </div>
+
+          <div class="form-actions" style="margin-top:28px;">
+            <a href="index.html" class="btn btn-glass">← Back to Toolkits</a>
+            <button type="submit" class="btn btn-primary">File Visit Audit Card 👁️</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/mock-data.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const clubSelect = document.getElementById("visitClub");
+    if (clubSelect && window.RAW_DISTRICT_CLUBS) {
+      clubSelect.innerHTML = '<option value="">Select visited club...</option>';
+      RAW_DISTRICT_CLUBS.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c.name;
+        opt.textContent = `${c.name} (${c.region} · ${c.zone})`;
+        clubSelect.appendChild(opt);
+      });
+    }
+    document.getElementById("visitDate").value = new Date().toISOString().split("T")[0];
+  });
+
+  function toggleFormView() {
+    const gView = document.getElementById('googleFormView');
+    const wView = document.getElementById('webFormView');
+    const btn = document.getElementById('toggleBtn');
+
+    if (gView.style.display === 'none') {
+      gView.style.display = 'block';
+      wView.style.display = 'none';
+      btn.textContent = 'Switch to Interactive Web Form';
+    } else {
+      gView.style.display = 'none';
+      wView.style.display = 'block';
+      btn.textContent = 'Switch to Google Form Embed';
+    }
+  }
+
+  function handleVisitSubmit(e) {
+    e.preventDefault();
+    const club = document.getElementById("visitClub").value;
+    const visitingOfficer = document.getElementById("visitOfficer").value;
+    const visitDate = document.getElementById("visitDate").value;
+    const meetingEngagement = parseInt(document.getElementById("visitEngagement").value);
+    const adminAudit = parseInt(document.getElementById("visitAdmin").value);
+    const leadershipHarmony = parseInt(document.getElementById("visitHarmony").value);
+    const leaderStatus = document.getElementById("visitLeaderStatus").value;
+    const hiddenIssues = document.getElementById("visitIssues").value;
+    const recommendedAction = document.getElementById("visitAction").value;
+
+    const entry = {
+      id: "V-" + Date.now(),
+      club,
+      visitingOfficer,
+      visitDate,
+      meetingEngagement,
+      adminAudit,
+      leadershipHarmony,
+      leaderStatus,
+      hiddenIssues,
+      recommendedAction
+    };
+
+    saveSubmission("visits", entry);
+    showToast(`Leader's Visit Card filed for ${club}! Cross-validation engine updated.`, "success");
+
+    setTimeout(() => {
+      sessionStorage.setItem("cqi_tier", "tier1");
+      sessionStorage.setItem("cqi_email", "governor@lions306d6.lk");
+      location.href = "../dashboard.html#heatmap";
+    }, 1200);
+  }
+</script>
+</body>
+</html>

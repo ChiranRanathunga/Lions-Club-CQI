@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CQI Dashboard | District 306 D6</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/lions-logo.png">
+<style>
+#loginGate { position:fixed; inset:0; background:var(--navy-deep); z-index:2000; display:flex; align-items:center; justify-content:center; padding:20px; }
+.login-box { text-align:center; max-width:480px; width:100%; padding:36px 28px; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--r-xl); backdrop-filter:blur(20px); box-shadow:var(--shadow-xl); }
+.login-box img { width:72px; margin:0 auto 16px; }
+.login-box h2 { font-size:1.4rem; margin-bottom:8px; }
+.login-box p { font-size:.85rem; margin-bottom:20px; color:var(--text-secondary); }
+.google-btn { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; padding:12px 20px; background:#fff; color:#333; border-radius:var(--r-md); font-weight:600; font-size:.9rem; transition:var(--t); cursor:pointer; border:none; font-family:var(--font); }
+.google-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.3); }
+.google-btn img { width:20px; }
+.demo-btns { margin-top:16px; display:flex; flex-direction:column; gap:8px; max-height:260px; overflow-y:auto; padding-right:4px; }
+.demo-btn { padding:10px 14px; background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--r-sm); font-size:.78rem; color:var(--text-secondary); cursor:pointer; font-family:var(--font); transition:var(--t); text-align:left; display:flex; align-items:center; justify-content:space-between; }
+.demo-btn:hover { background:var(--glass-hover); color:#fff; border-color:var(--gold); }
+
+.persona-bar { background:rgba(0, 45, 98, 0.6); border:1px solid var(--gold-border); border-radius:var(--r-md); padding:10px 16px; margin-bottom:20px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; backdrop-filter:blur(12px); }
+.persona-label { font-size:0.8rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em; display:flex; align-items:center; gap:6px; }
+
+.section-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--r-lg); padding:24px; backdrop-filter:blur(20px); margin-bottom:24px; }
+.section-card-title { font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+
+/* Modal Styling */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:3000; display:none; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(8px); }
+.modal-content { background:var(--surface); border:1px solid var(--glass-border); border-radius:var(--r-xl); max-width:800px; width:100%; max-height:90vh; overflow-y:auto; padding:28px; box-shadow:var(--shadow-xl); color:var(--text-primary); }
+</style>
+</head>
+<body>
+<!-- Login Gate -->
+<div id="loginGate">
+  <div class="login-box">
+    <img src="assets/lions-logo.png" alt="Lions Logo">
+    <h2>District 306 D6 CQI Dashboard</h2>
+    <p>Select a user role or club persona to test data collection & cross-validation analytics.</p>
+    <button class="google-btn" onclick="handleGoogleLogin()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+      Sign in with Google Account
+    </button>
+    <div class="demo-btns">
+      <div style="font-size:.72rem;color:var(--text-muted);margin:6px 0;text-align:center;">— Quick Access Persona Shortcuts —</div>
+      <button class="demo-btn" onclick="demoLogin('tier1','governor@lions306d6.lk','Gov. District 306 D6')">
+        <span>🔑 District Governor View</span><span style="font-size:0.7rem;color:var(--gold);">88 Clubs (District Wide)</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier2','region1a@lions306d6.lk','Region 1A Chairperson','Region 1A')">
+        <span>📍 Region 1A Chair View</span><span style="font-size:0.7rem;color:#7eb3ff;">8 Regional Clubs</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier2','region4b@lions306d6.lk','Region 4B Chairperson','Region 4B')">
+        <span>📍 Region 4B Chair View</span><span style="font-size:0.7rem;color:#7eb3ff;">13 Regional Clubs</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier3','pelawatta@lions306d6.lk','Pelawatta CQI Officer')">
+        <span>🏠 Pelawatta Club Officer</span><span style="font-size:0.7rem;color:var(--green);">🟢 Healthy (Score 3/3)</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier3','athurugiriya@lions306d6.lk','Athurugiriya CQI Officer')">
+        <span>🏠 Athurugiriya Club Officer</span><span style="font-size:0.7rem;color:var(--red);">🔴 Mismatch Alert</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier3','pitakotte@lions306d6.lk','Pita Kotte CQI Officer')">
+        <span>🏠 Pita Kotte Club Officer</span><span style="font-size:0.7rem;color:var(--red);">🔴 Mismatch Alert</span>
+      </button>
+      <button class="demo-btn" onclick="demoLogin('tier3','thalangamasouthnewcentury@lions306d6.lk','Thalangama South NC Officer')">
+        <span>🏠 Thalangama South NC Officer</span><span style="font-size:0.7rem;color:var(--amber);">🟡 Warning (Hidden Issues)</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Main App Layout -->
+<div class="dash-layout" id="dashApp" style="display:none;">
+  <aside class="dash-sidebar">
+    <div class="dash-logo"><img src="assets/lions-logo.png" alt="Lions"><span>CQI 306 D6</span></div>
+    <nav class="dash-nav">
+      <a href="#overview" class="active"><span>📊</span> Overview</a>
+      <a href="#heatmap"><span>🗺️</span> Health Heatmap</a>
+      <a href="#alerts"><span>⚠️</span> Alerts</a>
+      <a href="#solutions"><span>💡</span> Solution Bank</a>
+      <a href="toolkits/index.html"><span>📋</span> Form Toolkits</a>
+      <a href="index.html"><span>🏠</span> Public Home</a>
+      <a href="#" id="logoutBtn" style="margin-top:auto;color:var(--red);"><span>↩</span> Switch / Logout</a>
+    </nav>
+  </aside>
+  
+  <main class="dash-main">
+    <div class="dash-header">
+      <div class="dash-title">
+        <h2>District Health Dashboard</h2>
+        <p id="tierBadge">🔑 Governor View</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="live-dot" style="font-size:.82rem;color:var(--green);">Live System — August 2026</span>
+        <div class="nav-user">
+          <div class="nav-avatar">L</div>
+          <span id="dashUserName">Lion Leader</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active User & Club Switcher Bar -->
+    <div class="persona-bar">
+      <div class="persona-label">🎭 Active Persona Switcher:</div>
+      <select id="personaModeSelect" class="form-control" style="max-width:210px;padding:6px 12px;font-size:0.82rem;">
+        <option value="tier1">🔑 Governor (Tier 1 View)</option>
+        <option value="tier2">📍 Region Chair (Tier 2 View)</option>
+        <option value="tier3">🏠 Club Officer (Tier 3 View)</option>
+      </select>
+
+      <div id="personaRegionContainer" style="display:none;">
+        <select id="personaRegionSelect" class="form-control" style="max-width:210px;padding:6px 12px;font-size:0.82rem;"></select>
+      </div>
+
+      <div id="personaClubContainer" style="display:none;">
+        <select id="personaClubSelect" class="form-control" style="max-width:260px;padding:6px 12px;font-size:0.82rem;"></select>
+      </div>
+      <span style="font-size:0.75rem;color:var(--text-muted);margin-left:auto;">Acts as separate users in real-time</span>
+    </div>
+
+    <!-- Tier 3: Dedicated Club Officer View Section -->
+    <div id="clubOfficerSection" style="display:none;"></div>
+
+    <!-- Overall KPI Summary Scorecards -->
+    <div class="kpi-row" id="overview">
+      <div class="kpi-card kpi-green"><div class="kpi-num" id="kpiHealthy">68</div><div class="kpi-label">🟢 Healthy Clubs</div></div>
+      <div class="kpi-card kpi-amber"><div class="kpi-num" id="kpiMonitor">14</div><div class="kpi-label">🟡 Under Monitor</div></div>
+      <div class="kpi-card kpi-red"><div class="kpi-num" id="kpiCritical">6</div><div class="kpi-label">🔴 Critical — Mismatch Alerts</div></div>
+    </div>
+
+    <div id="tier1Only" style="display:none;">
+      <div style="background:var(--red-bg);border:1px solid var(--red-border);border-radius:var(--r-md);padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:1.2rem;">🚨</span>
+        <span style="font-size:.85rem;color:var(--red);">District Executive Alert: <strong>6 clubs</strong> have reported data mismatches or hidden issues between self-reports (T1.3) and visit cards (T2.2).</span>
+        <a href="#alerts" style="margin-left:auto;font-size:.8rem;font-weight:600;color:var(--amber);">View Alerts →</a>
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div id="filterBar" style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
+      <select id="filterRegion" class="form-control" style="max-width:200px;padding:10px 14px;">
+        <option value="">All 10 Regions</option>
+      </select>
+      <select id="filterZone" class="form-control" style="max-width:160px;padding:10px 14px;">
+        <option value="">All Zones</option>
+        <option value="Zone 1">Zone 1</option>
+        <option value="Zone 2">Zone 2</option>
+        <option value="Zone 3">Zone 3</option>
+      </select>
+      <input type="text" id="searchClub" class="form-control" placeholder="🔍 Search among 88 clubs..." style="max-width:260px;padding:10px 14px;">
+    </div>
+
+    <!-- Health Heatmap Matrix Table -->
+    <div class="section-card" id="heatmap">
+      <div class="section-card-title">🗺️ District 306 D6 Health Heatmap (Click any club row to inspect full CQI Dossier)</div>
+      <div style="overflow-x:auto;">
+        <table class="heatmap-table">
+          <thead>
+            <tr>
+              <th>Club Name</th>
+              <th>Region</th>
+              <th>Zone</th>
+              <th>July</th>
+              <th>August</th>
+              <th>Validation Status</th>
+              <th>Self Report (T1.3)</th>
+              <th>Leader Audit (T2.2)</th>
+            </tr>
+          </thead>
+          <tbody id="heatmapBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Cross-Validation Alerts Section -->
+    <div class="section-card" id="alerts">
+      <div class="section-card-title">⚠️ Cross-Validation Alerts (Catching Data Manipulation)</div>
+      <div id="alertsList"></div>
+    </div>
+
+    <!-- Solution Bank Section -->
+    <div class="section-card" id="solutions">
+      <div class="section-card-title">💡 Member Solution Bank (Toolkit 1.2 — Bottom-up Listening)</div>
+      <div id="solutionsList"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Club Dossier Modal -->
+<div id="dossierModal" class="modal-overlay">
+  <div class="modal-content">
+    <div id="dossierModalBody"></div>
+  </div>
+</div>
+
+<script src="js/mock-data.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+async function handleGoogleLogin() {
+  try {
+    const { user, tier } = await loginWithGoogle();
+    demoLogin(tier, user.email, user.displayName || user.email);
+  } catch (e) {
+    demoLogin('tier1', 'governor@lions306d6.lk', 'Gov. District 306 D6');
+  }
+}
+</script>
+</body>
+</html>
