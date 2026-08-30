@@ -1,3 +1,65 @@
+// Theme Manager (Supports Light mode default & Dark mode toggle)
+function getSavedTheme() {
+  return localStorage.getItem("cqi-theme") || "light";
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("cqi-theme", theme);
+  updateToggleButtons(theme);
+}
+
+function updateToggleButtons(theme) {
+  document.querySelectorAll(".btn-theme-toggle").forEach(btn => {
+    btn.innerHTML = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+  });
+}
+
+function toggleTheme() {
+  const current = getSavedTheme();
+  const next = current === "dark" ? "light" : "dark";
+  applyTheme(next);
+}
+
+// Initialize theme early
+applyTheme(getSavedTheme());
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Inject theme toggle button into navigation bar actions if not present
+  const navActions = document.querySelector(".nav-actions");
+  if (navActions && !document.querySelector(".btn-theme-toggle")) {
+    const toggleBtn = document.createElement("button");
+    toggleBtn.className = "btn btn-sm btn-theme-toggle";
+    toggleBtn.setAttribute("aria-label", "Toggle Dark/Light Theme");
+    toggleBtn.onclick = toggleTheme;
+    navActions.prepend(toggleBtn);
+    updateToggleButtons(getSavedTheme());
+  }
+
+  // Populate all club select dropdowns across form pages with 88 real Lions Clubs
+  if (typeof CQI !== "undefined" && CQI.clubs) {
+    const selects = document.querySelectorAll("select");
+    selects.forEach(select => {
+      const firstOpt = select.querySelector("option");
+      if (firstOpt && (firstOpt.textContent.includes("club") || firstOpt.textContent.includes("Club"))) {
+        const placeholder = firstOpt.outerHTML;
+        let html = placeholder;
+        
+        // Group by Region
+        const regions = [...new Set(CQI.clubs.map(c => c.region))].sort();
+        regions.forEach(r => {
+          html += `<optgroup label="${r}">`;
+          CQI.clubs.filter(c => c.region === r).sort((a, b) => a.name.localeCompare(b.name)).forEach(c => {
+            html += `<option value="${c.name}">${c.name} (${c.zone})</option>`;
+          });
+          html += `</optgroup>`;
+        });
+        select.innerHTML = html;
+      }
+    });
+  }
+});
+
 // Navbar scroll effect
 const navbar = document.querySelector(".navbar");
 if (navbar) {
@@ -74,31 +136,6 @@ function showToast(msg, type = "success") {
   setTimeout(() => t.remove(), 4000);
 }
 
-// Populate all club select dropdowns across form pages with 88 real Lions Clubs
-document.addEventListener("DOMContentLoaded", () => {
-  if (typeof CQI !== "undefined" && CQI.clubs) {
-    const selects = document.querySelectorAll("select");
-    selects.forEach(select => {
-      // Check if this select is for choosing a club
-      const firstOpt = select.querySelector("option");
-      if (firstOpt && (firstOpt.textContent.includes("club") || firstOpt.textContent.includes("Club"))) {
-        const placeholder = firstOpt.outerHTML;
-        let html = placeholder;
-        
-        // Group by Region
-        const regions = [...new Set(CQI.clubs.map(c => c.region))].sort();
-        regions.forEach(r => {
-          html += `<optgroup label="${r}">`;
-          CQI.clubs.filter(c => c.region === r).sort((a, b) => a.name.localeCompare(b.name)).forEach(c => {
-            html += `<option value="${c.name}">${c.name} (${c.zone})</option>`;
-          });
-          html += `</optgroup>`;
-        });
-        select.innerHTML = html;
-      }
-    });
-  }
-});
-
+window.toggleTheme = toggleTheme;
 window.showToast = showToast;
 window.updateNavAuth = updateNavAuth;
