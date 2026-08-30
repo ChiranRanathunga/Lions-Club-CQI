@@ -26,7 +26,22 @@ applyTheme(getSavedTheme());
 
 document.addEventListener("DOMContentLoaded", () => {
   // Inject theme toggle button into navigation bar actions if not present
-  const navActions = document.querySelector(".nav-actions");
+  let navActions = document.querySelector(".nav-actions");
+  if (!navActions) {
+    const navInner = document.querySelector(".nav-inner");
+    if (navInner) {
+      navActions = document.createElement("div");
+      navActions.className = "nav-actions";
+      const lastChild = navInner.lastElementChild;
+      if (lastChild && !lastChild.classList.contains("nav-links") && !lastChild.classList.contains("nav-brand")) {
+        navInner.insertBefore(navActions, lastChild);
+        navActions.appendChild(lastChild);
+      } else {
+        navInner.appendChild(navActions);
+      }
+    }
+  }
+
   if (navActions && !document.querySelector(".btn-theme-toggle")) {
     const toggleBtn = document.createElement("button");
     toggleBtn.className = "btn btn-sm btn-theme-toggle";
